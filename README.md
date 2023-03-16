@@ -7,6 +7,9 @@ It can read BMP image of 8/16/24/32 bit,and support the transparent pixel.
 
 ============Update notes============
 
+2023/3/16
+Adjust the memory allocation
+
 2022/12/28
 Change palette
 
