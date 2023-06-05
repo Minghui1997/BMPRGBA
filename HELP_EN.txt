@@ -1,0 +1,75 @@
+﻿BMPRGBA is a BMP image library,can read the BMP image and will the BMP pixel convert to the RGBA format.
+
+It can read the BMP image of 8/16(R5G5B5)/24/32 bit,and support the transparent pixel.
+
+Transparent pixel value:
+8 bit  : Depend on palette
+16 bit : A1
+24 bit : 0x010101
+32 bit : A8
+
+==========================How to use===========================
+
+Will source file and header file in the BMPRGBA folder add to in the you project.
+
+===============================================================
+
+============================STRUCT=============================
+BMPRGBA_BmpInf
+unsigned int BmpWidth
+unsigned int BmpHeight
+int BmpBit
+
+Struct of the contain BMP image information.
+
+BmpWidth : BMP image width
+BmpHeight : BMP image height
+BmpBit : BMP image bit
+
+Header file : "BMPRGBA.h"
+===============================================================
+
+
+============================Function===========================
+---------------------------------------------------------------
+void BMPRGBA_BmpGetInf(BMPRGBA_BmpInf *bmpinf,FILE *bmpfile)
+
+Get information of the BMP image file.
+
+bmpinf : &Struct of the BMP image information
+bmpfile : BMP file pointer
+
+Header file : "BMPRGBA.h",<stdio.h>
+---------------------------------------------------------------
+---------------------------------------------------------------
+void BMPRGBA_BmpToRGBA(char *dest,BMPRGBA_BmpInf *bmpinf,FILE *bmpfile)
+
+Read the pxiel data of the BMP image and convert to the RGBA format,passed to the dest char array.
+
+Calculation method of the dest char array size : ImageWidth * ImageHeight * 4
+
+dest : Dest char array
+bmpinf : &Struct of BMP image information
+bmpfile : BMP file pointer
+
+Header file : "BMPRGBA.h",<stdio.h>
+---------------------------------------------------------------
+===============================================================
+
+
+=======================DEMO=======================
+#include <stdio.h>
+#include <stdlib.h>
+#include "BMPRGBA.h"
+
+void main()
+{
+    BMPRGBA_BmpInf binf;
+    char *img_data;
+    FILE *bmp_file = fopen("bmp1.bmp","rb");
+    BMPRGBA_BmpGetInf(&binf,bmp_file);
+    img_data = malloc(binf.BmpWidth * binf.BmpHeight * 4);
+    BMPRGBA_BmpToRGBA(img_data,&binf,bmp_file);
+    system("pause");
+}
+===================================================

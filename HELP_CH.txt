@@ -1,0 +1,75 @@
+﻿BMPRGBA是一个BMP图像库，可以读取BMP图像并将BMP像素转换成RGBA格式。
+
+它能够读取8/16(R5G5B5)/24/32位的BMP图像，并支持透明像素。
+
+透明像素值：
+8位  : 取决于调色板
+16位 : A1
+24位 : 0x010101
+32位 : A8
+
+==============================使用方法=============================
+
+将BMPRGBA文件夹中的源文件和头文件添加到你的项目中。
+
+===================================================================
+
+
+==============================结构体===============================
+BMPRGBA_BmpInf
+unsigned int BmpWidth
+unsigned int BmpHeight
+int BmpBit
+
+包含BMP图像信息的结构体。
+
+BmpWidth : BMP图像宽度
+BmpHeight : BMP图像高度
+BmpBit : BMP图像位数
+
+头文件 : "BMPRGBA.h"
+===================================================================
+
+===============================函数================================
+-------------------------------------------------------------------
+void BMPRGBA_BmpGetInf(BMPRGBA_BmpInf *bmpinf,FILE *bmpfile)
+
+获取BMP图像文件的信息。
+
+bmpinf : &BMP图像信息的结构体
+bmpfile : BMP文件指针
+
+头文件 : "BMPRGBA.h",<stdio.h>
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+void BMPRGBA_BmpToRGBA(char *dest,BMPRGBA_BmpInf *bmpinf,FILE *bmpfile)
+
+读取BMP图像数据并转换成RGBA格式，传递到目标字节数组。
+
+目标字节数组大小的计算方法：图像宽度 * 图像高度 * 4
+
+dest : 目标字节数组
+bmpinf : &BMP图像信息的结构体
+bmpfile : BMP文件指针
+
+头文件 : "BMPRGBA.h",<stdio.h>
+-------------------------------------------------------------------
+===================================================================
+
+
+===============================演示================================
+#include <stdio.h>
+#include <stdlib.h>
+#include "BMPRGBA.h"
+
+void main()
+{
+    BMPRGBA_BmpInf binf;
+    char *img_data;
+    FILE *bmp_file = fopen("bmp1.bmp","rb");
+    BMPRGBA_BmpGetInf(&binf,bmp_file);
+    img_data = malloc(binf.BmpWidth * binf.BmpHeight * 4);
+    BMPRGBA_BmpToRGBA(img_data,&binf,bmp_file);
+    system("pause");
+}
+==================================================================
