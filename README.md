@@ -1,6 +1,11 @@
 # BMPRGBA
-BMPRGBA is a BMP image library,can read the BMP image and will the BMP pixel convert to the RGBA format.
+BMPRGBA is a open-source BMP image library,it used to load the BMP image file,and will loaded BMP pixels convert to 32bit RGBA format.
 
-It can read the BMP image of 8/16(R5G5B5)/24/32 bit,and support the transparent pixel.
+(CROSS ALL PLATFORM)
 
-                                       Formal : ✔ | Compile : ✔ | Run : - |
+●Can load the 8/16/24/32 bit BMP image.
+●Support the transparent pixel.
+
+
+
+Copyright (C) 2024 Minghui
