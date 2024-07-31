@@ -1,0 +1,78 @@
+﻿BMPRGBA is a open-source BMP image library,it used to get the info of bmp image 
+well as load the BMP image,and will loaded BMP pixels convert to 32bit RGBA 
+format. 
+
+●Can load the 8/16/24/32 bit BMP image.
+●Support the transparent pixel.
+
+
+---------------------------------------------------------------------
+How to use : 
+
+Will source and header files from the BMPRGBA folder add to your project.
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+About the transparent pixel of BMP image : 
+
+8bit BMP image:
+Color value 0x010101 in palette will be as transparent pixel value.
+
+16bit BMP image:
+Pixel with value of 0x0101 will be as transparent pixel value.
+
+24bit BMP image:
+Pixel with value of 0x010101 will be as transparent pixel value.
+
+32bit BMP image:
+Determined by the opacity of pixel.
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+Struct of BMPRGBA
+---------------------------------------------------------------------
+BMP image info
+typedef struct _BMPRGBA_BMPInfo
+{
+    int Width;
+    int Height;
+    unsigned short int PixelBit;
+    size_t RGBAsize;
+}BMPRGBA_BMPInfo;
+
+Width : width of BMP image
+Height : height of BMP image
+PixelBit : pixel bit of BMP image
+RGBAsize : BMP pixel are converted to size of 32bit RGBA pixel
+
+Header file : BMPRGBA.h
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+Function of BMPRGBA
+---------------------------------------------------------------------
+void BMPRGBA_BMPGetInfo(BMPRGBA_BMPInfo* bmpinfo,FILE* bmpfile)
+
+bmpinfo : pointer of the BMP image info struct
+bmpfile : pointer of the BMP image file
+
+Get the BMP image info from the BMP image file.
+
+Header file : BMPRGBA.h
+---------------------------------------------------------------------
+void BMPRGBA_BMPLoadToRGBA(unsigned char* pixeldata,int pixelorder,BMPRGBA_BMPInfo* bmpinfo,FILE* bmpfile)
+
+pixeldata : pointer of the RGBA pixel data
+pixelorder : line order of RGBA pixel
+     0 : positive order
+     1 : reverse order
+bmpinfo : pointer of the BMP image info struct
+bmpfile : pointer of the BMP image file
+
+Load the BMP image data and will it convert to 32bit RGBA format to memory area 
+indicated by the pixel data pointer.
+
+How the pixel data memory size is calculated : BMPImageWidth * BMPImageHeight * 4
+
+Header file : BMPRGBA.h
+---------------------------------------------------------------------
