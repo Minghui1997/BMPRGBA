@@ -5,7 +5,7 @@ BMPRGBA is a open-source BMP image library,it used to get the info of bmp image 
 
 ●Can load the 8/16/24/32 bit BMP image.  
 ●Support the transparent pixel.
-<br>
+(<br>)
 
 
 Copyright (C) 2024 Minghui
